@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<style>
+    @keyframes rgbThing {
+        0% {color: red;
+            }
+        50% {
+            color: green;
+        }
+        100% {color: rgb(125, 230, 248);
+            }
+    }
+
+    @keyframes buttonClicked {
+        from {
+            box-shadow: 4px 2px 20px -2px rgb(125, 230, 248);
+        }
+
+        to {
+            box-shadow: 2px 2px 20px -2px;
+        }
+        
+    }
+
+    textarea:focus {
+        outline-style: none;
+        
+        animation-name: buttonClicked;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate-reverse;
+        animation-timing-function: linear;
+    }
+
+    .submit:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .submit:focus {
+        outline: none;
+
+        animation-name: buttonClicked;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate-reverse;
+        animation-timing-function: linear;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #title {
+        height: 40px;
+        margin-top: 50px;
+        margin-bottom: 0;
+        text-align: center;
+
+        animation-name: rgbThing;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate-reverse;
+        animation-timing-function: ease-in;
+        cursor: crosshair;
+    }
+
+    #input-container {
+        display: block;
+        height: 500px;
+        width: 80%;
+        margin: 0 auto;
+
+    }
+
+    textarea {
+        resize: none;
+        position: absolute;
+        top: 30%;
+        width: 400px;
+        height: 300px;
+        border-radius: 5px;
+
+        box-shadow: 2px 2px 20px -2px;
+        
+    }
+
+    #raw {
+        left: 10%;
+    }
+
+    #encrypted {
+        right: 10%;
+    }
+
+    #encodeButton {
+        top: 50%;
+        left: 45%;
+    }
+
+    #decodeButton {
+        top: 70%;
+        left: 45%;
+    }
+
+    .submit {
+        position: absolute;
+        height: 100px;
+        width: 130px;
+
+        font-size: 30px;
+
+        background-color: white;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 2px 2px 20px -2px;
+    }
+
+    #shiftValueDisplay {
+        position: absolute;
+        top: 35%;
+        left: 43%;
+    }
+
+    .slider {
+        position: absolute;
+        top: 40%;
+        left: 43%;
+
+
+        -webkit-appearance: none;
+        width: 200px;
+        height: 5px;
+        background-color: rgba(0, 0, 0, 0.171);
+        opacity: 0.7;
+
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+    }
+
+    .slider:focus {
+        outline: none;
+    }
+
+    .slider:hover {
+        opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        background-color: rgb(125, 230, 248);
+        border-radius: 25px;
+    }
+
+    .slider::-moz-range-thumb {
+        -moz-appearance: none;
+        width: 25px;
+        height: 25px;
+        background: green;
+    }
+
+    
+</style>
+
+
+<html>
+    <body>
+        <h1 id="title">
+            Some cypher thing
+        </h1>
+
+        <div id="input-container">
+            <textarea id="raw"></textarea>
+            <input type="button" id="encodeButton" class="submit" value="codify!">
+            <input type="button" id="decodeButton" class="submit" value="decodify!">
+            <label id="shiftValueDisplay" for="shiftSlider">Shift by: 3</label>
+            <input id="shiftSlider" class="slider" type="range" min="1" max="200" value="3">
+
+            <textarea id="encrypted"></textarea>
+        </div>
+
+
+        <script type="text/javascript" src="caesarCipher.js"></script>
+    </body>
+
+
+</html>
